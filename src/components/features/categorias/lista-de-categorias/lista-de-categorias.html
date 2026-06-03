@@ -3,7 +3,7 @@
   <div class="card border-success text-center">
     <div class="card-header text-primary">
       <h1 class="card-title">
-        {{titulo}}
+        {{ titulo }}
       </h1>
     </div>
 
@@ -18,28 +18,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>demo 1</td>
-            <td>demo 1 descripcion</td>
-            <td>
-              <button class="btn btn-outline-success">Actualizar </button>
-            </td>
-            <td>
-              <button class="btn btn-outline-danger">Eliminar </button>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>demo 2</td>
-            <td>demo 2 descripcion</td>
-            <td>
-              <button class="btn btn-outline-success">Actualizar </button>
-            </td>
-            <td>
-              <button class="btn btn-outline-danger">Eliminar </button>
-            </td>
-          </tr>
+          @for (lc of listaDeCategorias; track lc.idCategoria) {
+            <tr>
+              <td>{{ lc.idCategoria }}</td>
+              <td>{{ lc.nombre }}</td>
+              <td>{{ lc.descripcion }}</td>
+              <td>
+                <button class="btn btn-outline-success">Actualizar</button>
+              </td>
+              <td>
+                <button class="btn btn-outline-danger">Eliminar</button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td><div class="alert alert-primary">No Existen documentos</div></td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
