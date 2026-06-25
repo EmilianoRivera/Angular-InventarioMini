@@ -1,42 +1,53 @@
 <div class="mb-3"></div>
 <div class="container">
   <div class="card border-success text-center">
-    <div class="card-header text-primary">
-      <h1 class="card-title">
-        {{ titulo }}
-      </h1>
-    </div>
+    <div class="card-header text-primary"></div>
 
     <div class="card-body text-primary">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>idCategoria</th>
-            <th>nombre</th>
-            <th>descripcion</th>
-            <th colspan="2">acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (lc of listaDeCategorias; track lc.idCategoria) {
+      @if (listaCategorias && listaCategorias.length > 0) {
+        <table class="table table-striped">
+          <thead>
             <tr>
-              <td>{{ lc.idCategoria }}</td>
-              <td>{{ lc.nombre }}</td>
-              <td>{{ lc.descripcion }}</td>
-              <td>
-                <button class="btn btn-outline-success">Actualizar</button>
-              </td>
-              <td>
-                <button class="btn btn-outline-danger">Eliminar</button>
-              </td>
+              <th>Identificador</th>
+              <th>Fecha de creaci&oacute;n</th>
+              <th>Descripci&oacute;n de Categoria</th>
+              <th>Nombre de Categoria</th>
+              <th colspan="2">Acciones</th>
             </tr>
-          } @empty {
-            <tr>
-              <td><div class="alert alert-primary">No Existen documentos</div></td>
-            </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @for (lc of listaCategorias; track lc.idCategoria) {
+              <tr>
+                <td>{{ lc.idCategoria }}</td>
+                <td>{{ lc.createAt }}</td>
+                <td>{{ lc.descripcionCategoria }}</td>
+                <td>{{ lc.nombreCategoria }}</td>
+                <td>
+                  <button
+                    class="btn btn-outline-success btn-sm me-2"
+                    (click)="editarCategoria(lc.idCategoria!)"
+                  >
+                    Actualizar
+                  </button>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-outline-danger"
+                    (click)="eliminarCategoria(lc.idCategoria!)"
+                  >
+                    Eliminar
+                  </button>
+                  <button class="btn btn-primary" (click)="irACrear()">Probar Enrutador</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        <div class="alert">
+          <p>Cargando categorías desde el servidor...</p>
+        </div>
+      }
     </div>
   </div>
 </div>

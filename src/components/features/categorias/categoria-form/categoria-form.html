@@ -1,1 +1,31 @@
-<p>categoria-form works!</p>
+<div class="container mt-4">
+  <div class="card shadow-sm col-md-6 mx-auto">
+    <div class="card-body">
+      <h3 class="card-title text-primary mb-4 text-center">
+        {{ categoria.idCategoria ? 'Editar Categoría' : 'Nueva Categoría' }}
+      </h3>
+
+      <form (ngSubmit)="guardar()">
+        <div class="mb-3">
+          <label class="form-label fw-bold">Nombre de la Categoría</label>
+          <input type="text" class="form-control" name="nombre" [(ngModel)]="categoria.nombreCategoria" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">Descripción</label>
+          <textarea class="form-control" name="descripcion" [(ngModel)]="categoria.descripcionCategoria" rows="3"></textarea>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+          <a class="btn btn-secondary" routerLink="/listaCategorias">Cancelar</a>
+          <button type="submit" class="btn btn-primary">
+            {{ categoria.idCategoria ? 'Actualizar' : 'Guardar' }}
+          </button>
+          <a class="btn btn-outline-success btn-sm me-2" [routerLink]="['/categoria-form', categoria.idCategoria]">
+             Actualizar
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

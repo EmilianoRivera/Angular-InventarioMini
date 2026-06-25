@@ -4,9 +4,11 @@ import { CategoriaForm } from '../components/features/categorias/categoria-form/
 import { Home } from '../shared/home/home';
 
 export const routes: Routes = [
-  {path:'', redirectTo:'/home', pathMatch:'full'},
+
+ { path: '', redirectTo: 'listaCategorias', pathMatch: 'full' },
   {path:'home', component:Home},
+  { path: '**', redirectTo: 'listaCategorias' },
   {path: 'listaCategorias', component: ListaDeCategorias },
-  { path:'categoriaForm', component:CategoriaForm },
-  {path: 'categoriForm/:id', component:CategoriaForm}
+  { path: 'categoria-form', component: CategoriaForm },
+  { path: 'categoria-form/:id', component: CategoriaForm },
 ];
