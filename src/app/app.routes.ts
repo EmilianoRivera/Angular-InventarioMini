@@ -1,12 +1,19 @@
 import { Routes } from '@angular/router';
-import { ListaDeCategorias } from '../components/features/categorias/lista-de-categorias/lista-de-categorias';
+import { ListaCategoria } from '../components/features/categorias/lista-categoria/lista-categoria';
 import { CategoriaForm } from '../components/features/categorias/categoria-form/categoria-form';
-import { Home } from '../shared/home/home';
+import { Home } from '../components/shared/home/home';
+import { ListaProducto } from '../components/features/productos/lista-producto/lista-producto';
+import { ProductoForm } from '../components/features/productos/producto-form/producto-form';
 
 export const routes: Routes = [
-  {path:'', redirectTo:'/home', pathMatch:'full'},
-  {path:'home', component:Home},
-  {path: 'listaCategorias', component: ListaDeCategorias },
-  { path:'categoriaForm', component:CategoriaForm },
-  {path: 'categoriForm/:id', component:CategoriaForm}
+  { path: '', redirectTo: 'Home', pathMatch: 'full' },
+  { path: 'Home', component: Home },
+  { path: 'ListaCategoria', component: ListaCategoria },
+  { path: 'ListaCategorias', component: ListaCategoria },
+  { path: 'CategoriaForm', component: CategoriaForm },
+  { path: 'CategoriaForm/:id', component: CategoriaForm },
+  { path: 'ProductoForm', component: ProductoForm },
+  { path: 'ProductoForm/:id', component: ProductoForm },
+  { path: 'ListaProductos', component: ListaProducto },
+  { path: 'ListaProducto', component: ListaProducto }
 ];

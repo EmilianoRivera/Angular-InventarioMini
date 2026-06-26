@@ -1,13 +1,16 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Home } from "../shared/home/home";
+import { Home } from '../components/shared/home/home';
+import { Footer } from '../components/shared/footer/footer';
+import { Header } from '../components/shared/header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Home],
+  imports: [RouterOutlet, Footer, Header],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
+  titulo : String = "Mi primera app"
   protected readonly title = signal('Ejercicio1');
 }
